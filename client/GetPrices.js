@@ -22,5 +22,9 @@ const getPrices = async (amountInHuman) => {
         addressFrom, 
         addressTo
     ]);
+    const contractToken2 = new ethers.Contract(addressTo, erc20ABI, provider);
+    const decimals2 = await contractToken2.decimals();
+    const amountOutHuman = ethers.utils.formatUnits(amountsOut[1].toString(), decimals2);
+    console.log(`500 BUSD = ${amountOutHuman} WBNB`);
 const amountInHuman = "500";
 getPrices(amountInHuman);
