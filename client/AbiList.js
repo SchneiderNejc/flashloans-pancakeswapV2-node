@@ -9,7 +9,7 @@ const pairABI = [
 ];
 
 const routerABI = [
-    "function getAmountsOut(address factory, uint amountIn, address[] memory path) internal view returns (uint[] memory amounts)"
+    "function getAmountsOut(address factory, uint amountIn, address[] memory path) view returns (uint[] memory amounts)"
 ];
 
 module.exports = {
