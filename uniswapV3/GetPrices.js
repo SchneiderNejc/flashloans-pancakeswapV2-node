@@ -10,6 +10,11 @@ async function getPrice(fromToken, toToken, amountInHuman) {
 
     const quoterAddress ="0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6"
 
+    const quoterContract = new ethers.Contract(
+        quoterAddress,
+        QuoterABI,
+        provider
+    );
 }
 
 const main = async () => {
