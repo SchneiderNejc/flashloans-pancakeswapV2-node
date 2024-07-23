@@ -15,6 +15,17 @@ async function getPrice(fromToken, toToken, amountInHuman) {
         QuoterABI,
         provider
     );
+
+    const amountIn = ethers.utils.parseUnits(amountInHuman, 6); // 6 decimals
+
+    const quoteAmountOut = await quoterContract.callStatic.quoteExactInputSingle(
+        fromToken, 
+        toToken, 
+        3000, // Fee, check out the SDK documentation (immutables.fee).
+        amountIn.toString(),
+        0
+    );
+    
 }
 
 const main = async () => {
