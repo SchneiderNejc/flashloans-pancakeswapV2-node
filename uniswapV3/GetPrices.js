@@ -26,6 +26,8 @@ async function getPrice(fromToken, toToken, amountInHuman) {
         0
     );
     
+    const amount = ethers.utils.formatUnits(quoteAmountOut.toString(), 18);
+    return amount;
 }
 
 const main = async () => {
