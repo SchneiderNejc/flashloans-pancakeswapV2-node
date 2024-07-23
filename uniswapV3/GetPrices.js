@@ -6,6 +6,11 @@ const { abi: QuoterABI } = require("@uniswap/v3-periphery/artifacts/contracts/le
 
 const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/a07ddfebd33a4161b915c09002291536");
 
+async function getPrice(fromToken, toToken, amountInHuman) {
+
+    const quoterAddress ="0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6"
+
+}
 
 const main = async () => {
     // Network: Ethereum
