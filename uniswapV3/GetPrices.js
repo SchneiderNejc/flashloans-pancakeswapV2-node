@@ -7,6 +7,10 @@ const { abi: QuoterABI } = require("@uniswap/v3-periphery/artifacts/contracts/le
 const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/a07ddfebd33a4161b915c09002291536");
 
 
+    // Network: Ethereum
+    const fromToken = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"; // USDC
+    const toToken = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"; // WETH
+    const amountInHuman = "3540"; // current ETH value
 
 
 
