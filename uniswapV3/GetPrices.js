@@ -3,8 +3,10 @@
 
 const ethers = require("ethers");
 const { abi: QuoterABI } = require("@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json");
+require('dotenv').config();
 
-const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/a07ddfebd33a4161b915c09002291536");
+// Mainenet provider
+const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`);
 
 async function getPrice(fromToken, toToken, amountInHuman) {
 

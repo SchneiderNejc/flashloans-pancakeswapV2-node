@@ -1,6 +1,8 @@
 const { ethers } = require('ethers');
+require('dotenv').config();
 
-const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/a07ddfebd33a4161b915c09002291536");
+// Mainenet provider
+const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${process.env.INFURA_PROJECT_ID}`);
 
 const factory = '0x1F98431c8aD98523631AE4a59f267346ea31F984'
 
@@ -17,10 +19,8 @@ const fee = 3000;
 
 const getPool = async () => {
     const pool = await factoryContract.getPool(WETH, ANKR, fee);
-    //console.log(pool);
-    return pool;
+    console.log(pool);
+    //return pool;
 }
 
 getPool();
-
-
