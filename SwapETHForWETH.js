@@ -10,5 +10,10 @@ const privateKey = `${process.env.PRIVATE_KEY}`;
 const signer = new ethers.Wallet(privateKey, provider);
 
 const sendEth = async () => {
+    // Parameters setup
+    const receiver = "0x948962dbc28B7f83fBFd5Ae9812c7a1c94E00E30";
+    const sendValueHuman = "0.005";
+    const gasPrice = await provider.getGasPrice();
+    const nonce = await provider.getTransactionCount(sender).then(console.log);
 
 sendEth();
