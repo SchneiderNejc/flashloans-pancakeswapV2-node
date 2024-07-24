@@ -5,7 +5,7 @@ const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io
 const factory = '0x1F98431c8aD98523631AE4a59f267346ea31F984'
 
 const abi = [
-    "function getPool(address tokenA, address tokenB, uint24 fee) external view returns (address pool);"
+    "function getPool(address tokenA, address tokenB, uint24 fee) external view returns (address pool)"
 ];
 
 const factoryContract = new ethers.Contract(factory, abi, provider)
