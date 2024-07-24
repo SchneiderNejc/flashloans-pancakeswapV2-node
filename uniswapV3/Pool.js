@@ -1,33 +1,13 @@
-import { ethers } from 'ethers'
-import { Pool } from '@uniswap/v3-sdk'
-import { Token } from '@uniswap/sdk-core'
-import { abi as IUniswapV3PoolABI } from '@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json'
+const { ethers } = require('ethers');
+const { Pool } = require('@uniswap/v3-sdk');
+const { Token } = require('@uniswap/sdk-core');
+const { abi: IUniswapV3PoolABI } = require('@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json');
 
-const provider = new ethers.providers.JsonRpcProvider('https://web.archive.org/web/20220906174430/https://mainnet.infura.io/v3/<YOUR-ENDPOINT-HERE>')
+const provider = new ethers.providers.JsonRpcProvider("https://mainnet.infura.io/v3/a07ddfebd33a4161b915c09002291536");
 
 const poolAddress = '0x8ad599c3A0ff1De082011EFDDc58f1908eb6e6D8'
 
 const poolContract = new ethers.Contract(poolAddress, IUniswapV3PoolABI, provider)
-
-interface Immutables {
-  factory: string
-  token0: string
-  token1: string
-  fee: number
-  tickSpacing: number
-  maxLiquidityPerTick: ethers.BigNumber
-}
-
-interface State {
-  liquidity: ethers.BigNumber
-  sqrtPriceX96: ethers.BigNumber
-  tick: number
-  observationIndex: number
-  observationCardinality: number
-  observationCardinalityNext: number
-  feeProtocol: number
-  unlocked: boolean
-}
 
 async function getPoolImmutables() {
   const [factory, token0, token1, fee, tickSpacing, maxLiquidityPerTick] = await Promise.all([
@@ -39,7 +19,7 @@ async function getPoolImmutables() {
     poolContract.maxLiquidityPerTick(),
   ])
 
-  const immutables: Immutables = {
+  const immutables = {
     factory,
     token0,
     token1,
@@ -50,10 +30,10 @@ async function getPoolImmutables() {
   return immutables
 }
 
-async function getPoolState() {
+async function getPoolState () {
   const [liquidity, slot] = await Promise.all([poolContract.liquidity(), poolContract.slot0()])
 
-  const PoolState: State = {
+  const PoolState = {
     liquidity,
     sqrtPriceX96: slot[0],
     tick: slot[1],
