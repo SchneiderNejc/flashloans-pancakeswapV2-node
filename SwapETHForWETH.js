@@ -25,4 +25,14 @@ const sendEth = async () => {
         gasLimit: 21_000,
         gasPrice: gasPrice 
     };
+
+    // Submit tx
+    const txReceipt = await signer.sendTransaction(txBuild);
+
+    // Print receipt
+    console.log(txReceipt);
+    console.log("https://sepolia.etherscan.io/tx/"+txReceipt.hash);
+}
+
+
 sendEth();
