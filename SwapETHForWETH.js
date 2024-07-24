@@ -16,4 +16,13 @@ const sendEth = async () => {
     const gasPrice = await provider.getGasPrice();
     const nonce = await provider.getTransactionCount(sender).then(console.log);
 
+    // Build tx instance
+    const txBuild = {
+        from: sender,
+        to: receiver,
+        value: ethers.utils.parseEther(sendValueHuman),
+        nonce: nonce,
+        gasLimit: 21_000,
+        gasPrice: gasPrice 
+    };
 sendEth();
