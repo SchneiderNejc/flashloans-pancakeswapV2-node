@@ -9,10 +9,10 @@ let fromTokenSymbol = "WETH";
 let toTokenSymbol = "SUSHI";
 
 module.exports = {
-    factory,
-    router,
-    fromToken,
-    toToken,
-    fromTokenSymbol,
-    toTokenSymbol
-}
+  factory,
+  router,
+  fromToken,
+  toToken,
+  fromTokenSymbol,
+  toTokenSymbol,
+};
